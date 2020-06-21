@@ -1,0 +1,63 @@
+/*
+ * Fonts
+ */
+
+/**
+ * Font Rubik
+ */
+ @font-face {
+  font-family: "Rubik";
+  src: url("../libs/fonts/rubik/Rubik-Black.ttf");
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+/**
+ * Font Nunito
+ */
+
+@font-face {
+  font-family: "Nunito";
+  src: url("../libs/fonts/nunito/Nunito-Regular.ttf");
+  font-style: normal;
+  font-weight: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Nunito";
+  src: url("../libs/fonts/nunito/Nunito-Black.ttf");
+  font-weight: bold;
+}
+/**
+ * Font Awesome
+ */
+@font-face {
+  font-family: "Font Awesome 5 Free";
+  font-style: normal;
+  font-weight: 900;
+  font-display: auto;
+  src: url("../libs/fa/webfonts/fa-solid-900.eot");
+  src: url("../libs/fa/webfonts/fa-solid-900.eot?#iefix") format("embedded-opentype"), url("../libs/fa/webfonts/fa-solid-900.woff2") format("woff2"), url("../libs/fa/webfonts/fa-solid-900.woff") format("woff"), url("../libs/fa/webfonts/fa-solid-900.ttf") format("truetype"), url("../libs/fa/webfonts/fa-solid-900.svg#fontawesome") format("svg");
+}
+.fa,
+.fas {
+  font-family: "Font Awesome 5 Free", sans-serif;
+  font-weight: 900;
+}
+
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #E5E5E5;
+  font-family: Rubik, sans-serif;
+  font-size: 16px;
+  color: #000000;
+  line-height: 1.5;
+  margin: 0;
+}
+
