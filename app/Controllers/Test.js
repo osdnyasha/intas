@@ -15,7 +15,6 @@ define('app/Controllers/Test.js', [
 ], function (Component,Controls,FinishTest,Popup,Questions,Sidebar,TestInfo,Footer,Tests) {
 
     return class Test extends Component {
-
         /**
          * Инициализация компонента
          */
