@@ -356,8 +356,8 @@ input[type="radio"] {
 input[type="radio"]:checked::after {
     content: "";
     position: absolute;
-    top: -1px;
-    left: -1px;
+    top: -2px;
+    left: -2px;
     background-color: #FF6659;
     border: 2px solid #D32F2F;
     width: 12px;

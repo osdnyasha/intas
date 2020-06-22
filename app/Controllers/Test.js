@@ -54,7 +54,7 @@ define('app/Controllers/Test.js', [
                     </main>
                     ${new Footer()}
                         <div class="popup-wraper"></div>
-            `
+            `;
         }
 
         addEventsTest() {
@@ -64,6 +64,9 @@ define('app/Controllers/Test.js', [
                 elem.addEventListener("click", (e) => {
                     if(this.control) {
                         this.control.stopTime();
+                    }
+                    if(document.documentElement.clientWidth < 800) {
+                        document.querySelector(".sidebar").classList.add("open");
                     }
                     if(e.target.tagName == "LI") {
                         this.openTestInfo(e.target.getAttribute('id'));

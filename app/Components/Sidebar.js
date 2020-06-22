@@ -19,9 +19,12 @@ define( 'app/Components/Sidebar.js', [
              * @returns {string}
              */
             render() {
+
+                document.documentElement.clientWidth < 800 ? this.state = "open" : this.state ="";
+
                 // Возвращение рендера
                 return `
-                    <aside class="sidebar sidebar-gray sidebar-bordered">
+                    <aside class="sidebar sidebar-gray sidebar-bordered ${this.state}">
                         <div class="sidebar-container">
                             <div class="sidebar-header sidebar-header-bottom-line">
                                 <a href="#" class="sidebar-header__close"><i class="fa fa-arrow-left" aria-hidden="true"></i></a>
