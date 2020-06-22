@@ -12,6 +12,7 @@ define( 'app/Components/Questions.js', [
             // Функция, вызывающая родительский конструктор
             super();
             this.data = data;
+            this.correctAnswersList = new Array();
        
         }
         /**
@@ -22,37 +23,44 @@ define( 'app/Components/Questions.js', [
             // Возвращение рендера
             return `
             <div class="test-questions">
+            <form id="form">
             <ul class="test-questions__ul test-questions__ul-unstyled">
                 ${this.prepareQuestions()}
             </ul>
+            </form>
         </div>
         <div class="test-bottom-controls top-line-gray">
-            <button class="btn red-styled stop-test">Завершить</button>
-        </div>
-                `;
+            <button form="form" type="submit" class="btn red-styled stop-test">Завершить</button>
+        </div>`;
         }
 
         prepareQuestions() {
             let result = '';
             let id = 0;
             this.data["questions"].forEach((elem) => {
+                const classType = elem["type"] ? "test-answers-type2" : "";
+
                 result += `<li class="test-questions__item">
                 <h3 class="test-questions__item-title">${elem["name"]}</h3>
-                <div class="test-questions__item-content test-answers d-flex">
-                ${this.prepareAnswers(elem["answers"],id)}
+                <div class="test-questions__item-content test-answers d-flex ${classType}">
+                ${this.prepareAnswers(elem["answers"],id,elem["required"])}
                 </div>
-            </li>
-                `;
+            </li>`;
                 id++;
-            })
+                this.correctAnswersList.push(elem["correctAnswer"]);
+            });
+
                 return result;
         }
 
-        prepareAnswers(data,id) {
+        prepareAnswers(data,globalId,required) {
+            let requiredQuest = required ? "required" : '';
             let result = '';
+            let id = 0;
             data.forEach((e)=> {
-                result += `<label class="test-question__label"><input type="radio" name="test${id}"/>${e}</label>`;
-            })
+                result += `<label class="test-question__label"><input type="radio" name="test${globalId}" value="${id}" ${requiredQuest}>${e}</label>`;
+                id++;
+            });
             return result;
         }
 

@@ -7,10 +7,9 @@
         // Загрузка компонентов
         require([
             'app/ComponentStorage.js',
-            'app/Controllers/Page.js'
-        ], function (ComponentStorage,Page) {
-            console.log(ComponentStorage.list);
-            document.body.innerHTML = new Page().render();
+            'app/Controllers/Test.js'
+        ], function (ComponentStorage,Test) {
+            document.body.innerHTML = new Test().render();
             ComponentStorage.list.forEach(instance => {
                 instance.afterRender();
             });
