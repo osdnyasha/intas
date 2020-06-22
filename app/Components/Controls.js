@@ -11,7 +11,8 @@ define( 'app/Components/Controls.js', [
 
             // Функция, вызывающая родительский конструктор
             super();
-            this.name = data["title"];
+
+            this.data = data;
        
         }
         /**
@@ -22,13 +23,13 @@ define( 'app/Components/Controls.js', [
             // Возвращение рендера
             return `
             <div class="test-header test-header-bottom-line d-flex">
-            <h3 class="test__header">${this.name}</h3>
+            <h3 class="test__header">${this.data["title"]}</h3>
             <div class="test__header-controls d-flex">
                 <div class="test-controls-reset">
                     <a href="#" class="controls__reset">Сбросить все ответы</a>
                 </div>
                 <div class="test-controls-counter left-line">
-                    <span class="controls__counter">5/30</span>
+                    <span class="controls__counter"><span id="countChecked">0</span>/${this.countQuestions()}</span>
                 </div>
                 <div class="test-controls-time left-line">
                     <span class="controls__time">00:01:34</span>
@@ -55,11 +56,37 @@ define( 'app/Components/Controls.js', [
             document.querySelector('.controls__time').innerHTML = (hours + ':' + min + ':' + sec);
             },100);
         }
+        
+        countQuestions() {
+            let total = 0;
+            this.data['questions'].map(() => {
+                total++;
+            });
+            return total;
+        }
 
         stopTime() {
             clearInterval(this.start_time_interval);
         }
 
+        updateChecked() {
+            const checked = document.querySelector("#countChecked").innerHTML = document.querySelectorAll("input:checked").length;
+            return checked;
+        }
+
+        addEvents() {
+            const inputs = document.querySelectorAll('input');
+            const self = this;
+            inputs.forEach((input) => {
+                input.addEventListener("click",() => {
+                    self.updateChecked();
+                });
+            });
+
+        }
+        afterRender() {
+            this.addEvents();
+        }
 
     };
 

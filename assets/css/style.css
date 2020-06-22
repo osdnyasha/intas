@@ -179,6 +179,7 @@ sidebar-list__item {
 }
 .test-description {
     padding: 16px;
+    animation: animation .5s 0s 1;
 }
 .test-description-title {
     font-family: Nunito;
@@ -200,6 +201,7 @@ sidebar-list__item {
 }
 .test-finish {
     padding: 16px;
+    animation: animation .5s 0s 1;
 }
 .test-finish__title {
     text-align: center;
@@ -287,6 +289,7 @@ sidebar-list__item {
 
 .test-questions {
     padding: 16px;
+    animation: animation .5s 0s 1;
 }
 .test-questions__ul-unstyled {
     padding: 0;
@@ -333,6 +336,12 @@ sidebar-list__item {
 }
 .test-bottom-controls {
     padding: 16px;
+}
+.flex-center {
+    justify-content: center;
+}
+.delete-storage {
+    width: 160px;
 }
 .stop-test {
     width: 110px;
@@ -449,7 +458,24 @@ input[type="radio"]:checked::after {
 .hide {
     display: none;
 }
+a:hover,
+.btn:hover {
+    opacity: .8;
+}
+.btn {
+    transition: all .3s ease-in-out;
+}
 
+body {
+    animation: animation 1s 0s 1;
+}
+
+@keyframes animation {
+    0% { opacity:0; }
+    20% { opacity:0.4; }
+    80% { opacity:0.8; }
+  100% { opacity:1; }
+}
 
 @media (max-width: 800px) {
     .page-content,
@@ -458,7 +484,11 @@ input[type="radio"]:checked::after {
         flex-wrap: wrap;
     }
     .sidebar {
-        width: 95%;
+        width: 50%;
+        position: fixed;
+        z-index: 33;
+        left: 0;
+        top: 50px;
     }
     .main-content {
         width: 95%;
